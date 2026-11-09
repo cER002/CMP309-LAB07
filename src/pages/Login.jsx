@@ -22,7 +22,6 @@ function Login() {
             setLoading(true)
             const user = await authLogin(formData.username, formData.password)
             login(user)
-            setLoading(false)
             navigate(url, { replace: true })
         } catch (err) {
             setError(err.message)
