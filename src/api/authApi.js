@@ -9,3 +9,5 @@ function login(username, password) {
         }, 500)
     )
 }
+
+export default login
