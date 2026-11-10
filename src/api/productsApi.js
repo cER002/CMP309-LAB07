@@ -2,7 +2,9 @@ function fetchProducts(signal) {
     return fetch('https://dummyjson.com/products?limit=100', { signal })
         .then(res => {
             if (!res.ok) {
-                throw new Error(`HTTP Error: ${res.status}`)
+                const err = new Error(`HTTP Error: ${res.status}`)
+                err.status = res.status
+                throw err
             }
             return res.json()
         })
@@ -19,7 +21,9 @@ function fetchProduct(id, signal) {
     return fetch(`https://dummyjson.com/products/${id}`, { signal })
         .then(res => {
             if (!res.ok) {
-                throw new Error(`HTTP Error: ${res.status}`)
+                const err = new Error(`HTTP Error: ${res.status}`)
+                err.status = res.status
+                throw err
             }
             return res.json()
         })
