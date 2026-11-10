@@ -1,4 +1,4 @@
-async function fetchProducts(signal) {
+function fetchProducts(signal) {
     return fetch('https://dummyjson.com/products?limit=100', { signal })
         .then(res => {
             if (!res.ok) {
@@ -6,13 +6,16 @@ async function fetchProducts(signal) {
             }
             return res.json()
         })
+        .then(
+            res => res.products
+        )
         .catch(err => {
             err.name === 'AbortError' ? console.error('fetch aborted', err) : console.error('A network error has occured', err)
             throw err
         })
 }
 
-async function fetchProduct(id, signal) {
+function fetchProduct(id, signal) {
     return fetch(`https://dummyjson.com/products/${id}`, { signal })
         .then(res => {
             if (!res.ok) {
