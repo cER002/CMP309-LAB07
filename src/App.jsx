@@ -1,6 +1,5 @@
-import { useState } from 'react'
 import './App.css'
-import { BrowserRouter, Route, Routes } from 'react-router'
+import { Route, Routes } from 'react-router'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import Home from './pages/Home.jsx'
 import Layout from './components/Layout.jsx'
@@ -15,14 +14,16 @@ function App() {
   return (
     <>
       <Routes>
+        <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Layout />} >
+        <Route path="/products">
           <Route index element={<ProductList />} />
           <Route path=":id" element={<ProductDetail />} />
         </Route>
         <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
+        </Route>
       </Routes>
     </>
   )
