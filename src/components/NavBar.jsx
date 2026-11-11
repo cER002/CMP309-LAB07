@@ -2,7 +2,7 @@ import { NavLink } from "react-router";
 import useCartStore from "../store/cartStore.js";
 import { useAuth } from "../context/AuthContext.jsx";
 
-function NavBar() {
+function NavBar({ theme, toggleTheme }) {
     const { user, logout } = useAuth()
     const itemCount = useCartStore(state => state.items.reduce((sum, item) => sum + item.quantity, 0))
 
@@ -24,6 +24,7 @@ function NavBar() {
                 to="/login"
                 className={({ isActive }) => (isActive ? 'nav active' : 'nav')}>Login</NavLink> :
                 <div><p>{user.username}</p> <button onClick={logout}>Logout</button></div>}
+            <button onClick={toggleTheme}>{theme}</button>
         </nav>
     )
 }

@@ -1,0 +1,19 @@
+.light {
+    color: #111;
+    background-color: #eee;
+    min-height: 100vh;
+}
+
+.dark {
+    color: #eee;
+    background-color: #111;
+    min-height: 100vh;
+}
+
+.dark a {
+    color: #8ab4ff;
+}
+
+.nav.active {
+    font-weight: bold;
+}
